@@ -92,6 +92,7 @@ export default function ProjectsPage() {
     switch (id) {
       case 1: return "/hapag-ai-video.mp4";
       case 2: return "/ontap-creatives-video.mp4";
+      case 3: return "/burnboxvideo.mp4"
       case 4: return "/mmorpg-video.mp4";
       case 6: return "/ai-plmun-tutor-video.mp4";
       default: return null;

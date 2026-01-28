@@ -44,9 +44,71 @@ const PRICING_TIERS = [
   }
 ];
 
+const PROJECT_CATEGORIES = [
+  {
+    title: "AI Driven Systems",
+    gradient: "from-electric-blue to-soft-neon-pink",
+    items: [
+       {
+          title: "HAPAG AI",
+          category: "Web Platform",
+          desc: "An AI-powered web platform designed to simplify meal planning and grocery preparation by generating personalized recipes, smart shopping lists, and meal schedules.",
+          tags: ["Next.js", "AI API", "Node.js"],
+          gradient: "from-electric-blue/10 to-transparent",
+          borderHover: "hover:border-electric-blue/50"
+       },
+       {
+          title: "AI PLMUN TUTOR",
+          category: "Web Application",
+          desc: "An AI-powered tutoring web application designed to assist students with learning and homework support through interactive question and answer sessions.",
+          tags: ["OpenAI API", "Python", "React"],
+          gradient: "from-soft-neon-pink/10 to-transparent",
+          borderHover: "hover:border-soft-neon-pink/50"
+       }
+    ]
+  },
+  {
+    title: "E-Commerce Web Platform",
+    gradient: "from-neon-cyan to-electric-blue",
+    items: [
+       {
+          title: "ONTAP CREATIVES",
+          category: "E-Commerce Platform",
+          desc: "A digital contact sharing platform that lets users create and manage NFC-enabled digital business cards and profiles, facilitating instant contact sharing.",
+          tags: ["React", "NFC", "E-commerce"],
+          gradient: "from-neon-cyan/10 to-transparent",
+          borderHover: "hover:border-neon-cyan/50"
+       }
+    ]
+  },
+  {
+    title: "Interactive Websites",
+    gradient: "from-orange-500 to-red-600",
+    items: [
+       {
+          title: "BURNBOX ADVERTISING",
+          category: "Business Website",
+          desc: "A creative printing and signage service provider website that helps businesses increase brand visibility through custom printing and visual marketing solutions.",
+          tags: ["PHP", "JavaScript", "Custom CSS"],
+          gradient: "from-orange-500/10 to-transparent",
+          borderHover: "hover:border-orange-500/50"
+       },
+       {
+          title: "THE GREAT WAR: APOCALYPTO",
+          category: "Promotional Landing",
+          desc: "A promotional landing page for a fictional MMORPG, showcasing characters, storyline, and game features while inviting visitors to register.",
+          tags: ["Next.js", "Tailwind CSS", "Framer Motion"],
+          gradient: "from-red-600/10 to-transparent",
+          borderHover: "hover:border-red-600/50"
+       }
+    ]
+  }
+];
+
 export default function HomeContent() {
   const [badgeState, setBadgeState] = useState(0); // 0: Clients, 1: Projects
   const [pricingIndex, setPricingIndex] = useState(0);
+  const [categoryIndex, setCategoryIndex] = useState(0);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const [isVideoLoading, setIsVideoLoading] = useState(true);
 
@@ -106,6 +168,7 @@ export default function HomeContent() {
              </div>
           </div> */}
 
+          
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold font-heading leading-tight mb-6 bg-clip-text text-transparent bg-linear-to-b from-white to-white/70 max-w-5xl">
             Transforming Vision into <br />
             <span className="bg-clip-text text-transparent bg-linear-to-r from-electric-blue to-soft-neon-pink">
@@ -131,12 +194,12 @@ export default function HomeContent() {
           </Link> */}
         </div>
       </section>
-
       {/* Dashboard / Content Section */}
       <section
         id="dashboard"
         className="relative z-10 lg:min-h-screen w-full flex items-center justify-center px-4 py-10 transition-colors duration-500"
       >
+
         <div className="w-full max-w-7xl mx-auto">
           {/* Dashboard Preview Mockup (Same as before but wrapped in section for snap) */}
           <div className="w-full relative group">
@@ -157,12 +220,10 @@ export default function HomeContent() {
                       <div className="absolute top-[20%] right-[20%] w-[30%] h-[30%] bg-white/10 blur-[1px] rounded-full"></div>
                     </div>
                   </div>
-
                   {/* Status LED */}
                   <div className="w-0.5 h-0.5 rounded-full bg-green-500 shadow-[0_0_4px_rgba(34,197,94,0.8)]"></div>
                 </div>
               </div>
-
               {/* Dashboard Content Placeholder - Laptop Screen */}
               <div className="w-full aspect-auto bg-black relative overflow-hidden rounded-lg border border-white/5 mx-auto flex items-center justify-center">
                  {/* Loading Spinner */}
@@ -217,138 +278,64 @@ export default function HomeContent() {
       {/* Section 3: Featured Projects */}
       <section className="flex flex-col w-full gap-5 transition-colors">
         <div className="flex flex-col w-full gap-5">
-            <h2 className="text-center text-3xl md:text-5xl font-bold font-heading bg-clip-text text-transparent bg-linear-to-br from-white via-white to-white/50 pb-8">
+            <h2 className="text-center text-3xl md:mt-0 mt-20 md:text-5xl font-bold font-heading bg-clip-text text-transparent bg-linear-to-br from-white via-white to-white/50 pb-8">
               What We Build
             </h2>
-          <div className="space-y-4 flex flex-col">
-            <h3 className="text-2xl md:text-3xl max-w-2xl mx-auto font-bold uppercase tracking-wide bg-clip-text text-transparent bg-linear-to-r from-electric-blue to-soft-neon-pink">
-              AI Driven Systems
+          {/* Dynamic Project Slider */}
+          <div className="space-y-4 flex flex-col min-h-[600px] justify-between">
+            <h3 className={`text-2xl text-center md:text-3xl max-w-2xl mx-auto font-bold uppercase tracking-wide bg-clip-text text-transparent bg-linear-to-r ${PROJECT_CATEGORIES[categoryIndex].gradient} transition-colors duration-500`}>
+              {PROJECT_CATEGORIES[categoryIndex].title}
             </h3>
-            {/* AI Driven Systems */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 px-4">
-               {/* HAPAG AI */}
-               <div className="group relative bg-[#090909] border border-white/10 rounded-2xl p-6 shadow-2xl overflow-hidden hover:border-electric-blue/50 transition-colors duration-500">
-                  <div className="absolute top-0 right-0 p-4 opacity-50 text-[10px] tracking-widest uppercase">Web Platform</div>
-                   <h3 className="text-2xl font-bold text-white mb-4">HAPAG AI</h3>
-                   <div className="w-full aspect-video bg-carbon-black rounded-lg mb-6 flex items-center justify-center relative overflow-hidden">
-                       <div className="absolute inset-0 bg-linear-to-br from-electric-blue/10 to-transparent"></div>
-                       <div className="text-center z-10">
-                          <div className="text-xs text-white/50 mb-1">Preview</div>
-                          <div className="font-bold text-white">Coming Soon</div>
-                       </div>
-                   </div>
-                   <p className="text-gray-400 text-sm leading-relaxed mb-4">
-                     An AI-powered web platform designed to simplify meal planning and grocery preparation by generating personalized recipes, smart shopping lists, and meal schedules.
-                   </p>
-                   <ul className="flex flex-wrap gap-2">
-                      {["Next.js", "AI API", "Node.js"].map(tag => (
-                        <li key={tag} className="text-[10px] px-2 py-1 rounded-full bg-white/5 border border-white/10 text-white/50">{tag}</li>
-                      ))}
-                   </ul>
-               </div>
-
-               {/* AI PLMUN TUTOR */}
-               <div className="group relative bg-[#090909] border border-white/10 rounded-2xl p-6 shadow-2xl overflow-hidden hover:border-soft-neon-pink/50 transition-colors duration-500">
-                  <div className="absolute top-0 right-0 p-4 opacity-50 text-[10px] tracking-widest uppercase">Web Application</div>
-                   <h3 className="text-2xl font-bold text-white mb-4">AI PLMUN TUTOR</h3>
-                   <div className="w-full aspect-video bg-carbon-black rounded-lg mb-6 flex items-center justify-center relative overflow-hidden">
-                       <div className="absolute inset-0 bg-linear-to-br from-soft-neon-pink/10 to-transparent"></div>
-                        <div className="text-center z-10">
-                          <div className="text-xs text-white/50 mb-1">Preview</div>
-                          <div className="font-bold text-white">Coming Soon</div>
-                       </div>
-                   </div>
-                   <p className="text-gray-400 text-sm leading-relaxed mb-4">
-                     An AI-powered tutoring web application designed to assist students with learning and homework support through interactive question and answer sessions.
-                   </p>
-                   <ul className="flex flex-wrap gap-2">
-                       {["OpenAI API", "Python", "React"].map(tag => (
-                        <li key={tag} className="text-[10px] px-2 py-1 rounded-full bg-white/5 border border-white/10 text-white/50">{tag}</li>
-                      ))}
-                   </ul>
-               </div>
-            </div>
-          </div>
-          <div className="space-y-4 flex flex-col mt-20">
-            <h3 className="text-2xl md:text-3xl max-w-2xl mx-auto font-bold uppercase tracking-wide bg-clip-text text-transparent bg-linear-to-r from-neon-cyan to-electric-blue">
-              E-Commerce Web Platform
-            </h3>
-            {/* E-Commerce */}
-            <div className="w-full px-4">
-                <div className="group relative bg-[#090909] border border-white/10 rounded-2xl p-6 shadow-2xl overflow-hidden hover:border-neon-cyan/50 transition-colors duration-500 max-w-4xl mx-auto">
-                   <div className="absolute top-0 right-0 p-4 opacity-50 text-[10px] tracking-widest uppercase">E-Commerce Platform</div>
-                   <h3 className="text-2xl font-bold text-white mb-4">ONTAP CREATIVES</h3>
-                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                      <div className="w-full aspect-video bg-carbon-black rounded-lg flex items-center justify-center relative overflow-hidden">
-                          <div className="absolute inset-0 bg-linear-to-br from-neon-cyan/10 to-transparent"></div>
-                           <div className="text-center z-10">
+            
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 px-4 transition-all duration-500 ease-in-out">
+               {PROJECT_CATEGORIES[categoryIndex].items.map((item, idx) => (
+                 <div key={idx} className={`group relative bg-[#090909] border border-white/10 rounded-2xl p-6 shadow-2xl overflow-hidden ${item.borderHover} transition-colors duration-500 ${PROJECT_CATEGORIES[categoryIndex].items.length === 1 ? 'lg:col-span-2 lg:max-w-4xl lg:mx-auto w-full' : ''}`}>
+                    <div className="absolute top-0 right-0 p-4 opacity-50 text-[10px] tracking-widest uppercase">{item.category}</div>
+                     <h3 className="text-2xl font-bold text-white mb-4 md:mb-4">{item.title}</h3>
+                     
+                     <div className={`w-full ${PROJECT_CATEGORIES[categoryIndex].items.length === 1 ? 'aspect-[21/9]' : 'aspect-video'} bg-carbon-black rounded-lg mb-6 flex items-center justify-center relative overflow-hidden`}>
+                         <div className={`absolute inset-0 bg-linear-to-br ${item.gradient}`}></div>
+                         <div className="text-center z-10">
                             <div className="text-xs text-white/50 mb-1">Preview</div>
                             <div className="font-bold text-white">Coming Soon</div>
                          </div>
-                      </div>
-                      <div className="flex flex-col justify-center">
-                         <p className="text-gray-400 text-sm leading-relaxed mb-6">
-                           A digital contact sharing platform that lets users create and manage NFC-enabled digital business cards and profiles, facilitating instant contact sharing.
-                         </p>
-                          <ul className="flex flex-wrap gap-2">
-                             {["React", "NFC", "E-commerce"].map(tag => (
-                                <li key={tag} className="text-[10px] px-2 py-1 rounded-full bg-white/5 border border-white/10 text-white/50">{tag}</li>
-                              ))}
-                           </ul>
-                      </div>
-                   </div>
-               </div>
-            </div>
-          </div>
-          <div className="space-y-4 flex flex-col mt-20">
-            <h3 className="text-2xl md:text-3xl max-w-2xl mx-auto font-bold uppercase tracking-wide bg-clip-text text-transparent bg-linear-to-r from-orange-500 to-red-600">
-              Interactive Websites
-            </h3>
-            {/* Interactive Websites */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 px-4">
-                {/* BURNBOX */}
-               <div className="group relative bg-[#090909] border border-white/10 rounded-2xl p-6 shadow-2xl overflow-hidden hover:border-orange-500/50 transition-colors duration-500">
-                  <div className="absolute top-0 right-0 p-4 opacity-50 text-[10px] tracking-widest uppercase">Business Website</div>
-                   <h3 className="text-2xl font-bold text-white mb-4">BURNBOX ADVERTISING</h3>
-                   <div className="w-full aspect-video bg-carbon-black rounded-lg mb-6 flex items-center justify-center relative overflow-hidden">
-                       <div className="absolute inset-0 bg-linear-to-br from-orange-500/10 to-transparent"></div>
-                        <div className="text-center z-10">
-                          <div className="text-xs text-white/50 mb-1">Preview</div>
-                          <div className="font-bold text-white">Coming Soon</div>
-                       </div>
-                   </div>
-                   <p className="text-gray-400 text-sm leading-relaxed mb-4">
-                     A creative printing and signage service provider website that helps businesses increase brand visibility through custom printing and visual marketing solutions.
-                   </p>
-                   <ul className="flex flex-wrap gap-2">
-                       {["PHP", "JavaScript", "Custom CSS"].map(tag => (
-                        <li key={tag} className="text-[10px] px-2 py-1 rounded-full bg-white/5 border border-white/10 text-white/50">{tag}</li>
-                      ))}
-                   </ul>
-               </div>
+                     </div>
 
-                {/* THE GREAT WAR */}
-               <div className="group relative bg-[#090909] border border-white/10 rounded-2xl p-6 shadow-2xl overflow-hidden hover:border-red-600/50 transition-colors duration-500">
-                  <div className="absolute top-0 right-0 p-4 opacity-50 text-[10px] tracking-widest uppercase">Promotional Landing</div>
-                   <h3 className="text-2xl font-bold text-white mb-4">THE GREAT WAR: APOCALYPTO</h3>
-                   <div className="w-full aspect-video bg-carbon-black rounded-lg mb-6 flex items-center justify-center relative overflow-hidden">
-                       <div className="absolute inset-0 bg-linear-to-br from-red-600/10 to-transparent"></div>
-                        <div className="text-center z-10">
-                          <div className="text-xs text-white/50 mb-1">Preview</div>
-                          <div className="font-bold text-white">Coming Soon</div>
-                       </div>
-                   </div>
-                   <p className="text-gray-400 text-sm leading-relaxed mb-4">
-                     A promotional landing page for a fictional MMORPG, showcasing characters, storyline, and game features while inviting visitors to register.
-                   </p>
-                   <ul className="flex flex-wrap gap-2">
-                       {["Next.js", "Tailwind CSS", "Framer Motion"].map(tag => (
-                        <li key={tag} className="text-[10px] px-2 py-1 rounded-full bg-white/5 border border-white/10 text-white/50">{tag}</li>
-                      ))}
-                   </ul>
+                     <p className="text-gray-400 text-sm leading-relaxed mb-4">
+                       {item.desc}
+                     </p>
+                     <ul className="flex flex-wrap gap-2">
+                        {item.tags.map(tag => (
+                          <li key={tag} className="text-[10px] px-2 py-1 rounded-full bg-white/5 border border-white/10 text-white/50">{tag}</li>
+                        ))}
+                     </ul>
+                 </div>
+               ))}
+            </div>
+
+
+            {/* Slider Controls */}
+            <div className="flex gap-4 items-center justify-center mt-8">
+               <button 
+                 onClick={() => setCategoryIndex(prev => (prev === 0 ? PROJECT_CATEGORIES.length - 1 : prev - 1))}
+                 className="px-6 py-2 rounded-full border border-white/10 hover:bg-white/5 text-sm text-white/70 hover:text-white transition-all uppercase tracking-wider"
+               >
+                 Previous
+               </button>
+               <div className="flex gap-2">
+                  {PROJECT_CATEGORIES.map((_, i) => (
+                    <div key={i} className={`w-2 h-2 rounded-full transition-all duration-300 ${i === categoryIndex ? 'bg-electric-blue w-6' : 'bg-white/20'}`} />
+                  ))}
                </div>
+               <button 
+                 onClick={() => setCategoryIndex(prev => (prev === PROJECT_CATEGORIES.length - 1 ? 0 : prev + 1))}
+                 className="px-6 py-2 rounded-full border border-white/10 hover:bg-white/5 text-sm text-white/70 hover:text-white transition-all uppercase tracking-wider"
+               >
+                 Next
+               </button>
             </div>
           </div>
+
         </div>
       </section>
 
