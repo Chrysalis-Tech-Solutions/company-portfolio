@@ -1,0 +1,113 @@
+@import "tailwindcss";
+
+@theme {
+  --color-carbon-black: #020305;
+  --color-deep-charcoal: #080A0E;
+  --color-graphite-gray: #0E1116;
+  --color-soft-ash-gray: #161920;
+
+  --color-neon-cyan: #00F5FF;
+  --color-electric-blue: #3A86FF;
+  --color-neon-violet: #7B61FF;
+  --color-soft-neon-pink: #FF4ECD;
+  --color-aurora-green: #00FFA3;
+
+  --color-pure-white: #FFFFFF;
+  --color-soft-white: #F5F7FA;
+  --color-light-gray: #E5E9F0;
+  --color-muted-gray: #9AA3B2;
+
+  --font-heading: var(--font-heading);
+  --font-body: var(--font-body);
+}
+
+:root {
+  --background: var(--color-carbon-black);
+  --foreground: var(--color-pure-white);
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-snap-type: y proximity;
+  height: 100vh;
+  overflow-y: scroll;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-body), Arial, Helvetica, sans-serif;
+  user-select: none;
+  min-height: 100vh;
+}
+
+main > section, 
+main > div > section {
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading), sans-serif;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(10px); }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-on-scroll.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fadeInUp {
+  animation: fadeInUp 0.4s ease-out forwards;
+}
+
+/* Custom Scrollbar Globally */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-carbon-black);
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, var(--color-electric-blue), var(--color-soft-neon-pink));
+  border-radius: 99px;
+  border: 2px solid var(--color-carbon-black);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to bottom, var(--color-neon-cyan), var(--color-neon-violet));
+}
+
+/* Custom Scrollbar for Modal (Narrower) */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  border: none;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
