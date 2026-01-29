@@ -128,12 +128,14 @@ export default function ProjectsPage() {
          if (index === 7) return { type: "functions", project: activeProject, colSpan: 1 };
       }
     }
-    
+        
+
+
+    // this is the group 
     // Group 2: Corner Cards (0, 3, 4, 7)
     // -> Video takes Corner (0-1, 2-3, 4-5, 6-7). Info takes Vertical Neighbors.
 
-    
-
+  
     
     else {
       // Top Left (0) -> Video (0-1). Info Below (4, 5).
