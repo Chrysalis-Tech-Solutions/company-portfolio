@@ -40,11 +40,11 @@ export default function Navbar() {
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 z-50 pointer-events-auto" onClick={() => setIsMobileMenuOpen(false)}>
             <Image
-              src="/logo.svg"
+              src="/companylogo.png"
               alt="Chrysalis Logo"
               width={32}
               height={32}
-              className="aspect-square w-14 object-center object-cover invert"
+              className="aspect-square w-14 object-center object-cover "
             />
             <h1 className="hidden lg:block font-heading font-semibold tracking-widest text-lg">CHRYSALIS</h1>
           </Link>

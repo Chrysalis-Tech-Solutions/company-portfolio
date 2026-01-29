@@ -2,12 +2,14 @@
 
 import { Project } from "@/types";
 import { useState } from "react";
+import { VIDEO_ASSETS } from "../config/assets";
 
 const projects: Project[] = [
   {
     id: 1,
     title: "HAPAG AI",
     category: "AI-POWERED WEB PLATFORM",
+    videoUrl: VIDEO_ASSETS.projects.hapagAi,
     overview: "HAPAG AI is an AI-powered web platform designed to simplify meal planning and grocery preparation by generating personalized recipes, smart shopping lists, and meal schedules. It helps users save time, make healthier food choices, and connect with local stores through an intelligent, user-friendly digital experience.",
     functions: ["AI RECIPE AND MEAL PLANNING", "SMART SHOPPING LISTS", "STORE RECOMMENDATIONS", "MEAL PLANNING CALENDAR", "CHAT INTERFACE", "DIETARY PREFERENCES", "STORE OWNER FEATURE"],
     techStack: ["Next.js", "AI API", "Node.js"],
@@ -17,6 +19,7 @@ const projects: Project[] = [
     id: 2,
     title: "ONTAP CREATIVES",
     category: "E-COMMERCE WEB PLATFORM",
+    videoUrl: VIDEO_ASSETS.projects.ontapCreatives,
     overview: "Ontap.ph is a digital contact sharing platform that lets users create and manage NFC-enabled digital business cards and profiles, making it easy to share contact information instantly via tap or web link without traditional paper cards.",
     functions: ["DIGITAL CONTACT SHARING", "NFC TECHNOLOGY INTEGRATION", "USER REGISTRATION AND DASHBOARD", "PROFILE CUSTOMIZATION", "ONLINE PURCHASING", "ORDER MONITORING", "ADMIN DASHBOARD"],
     techStack: ["React", "NFC", "E-commerce"],
@@ -26,6 +29,7 @@ const projects: Project[] = [
     id: 3,
     title: "BURNBOX ADVERTISING",
     category: "BUSINESS WEBSITE",
+    videoUrl: VIDEO_ASSETS.projects.burnbox,
     overview: "Burnbox Advertising (also referred to as Burnbox Printing) is a creative printing and signage service provider that helps businesses increase brand visibility through custom printing and visual marketing solutions.",
     functions: ["MAILING SYSTEM (SENDING AND RECEIVING)", "RESPONSIVE DISPLAY", "CROSS-BROWSER COMPATIBILITY", "CUSTOM UI/UX", "ADMIN DASHBOARD", "STAFF MANAGEMENT"],
     techStack: ["PHP", "JavaScript", "Custom CSS"],
@@ -35,6 +39,7 @@ const projects: Project[] = [
     id: 4,
     title: "THE GREAT WAR: APOCALYPTO",
     category: "PROMOTIONAL LANDING WEBSITE",
+    videoUrl: VIDEO_ASSETS.projects.mmorpg,
     overview: "A promotional landing page for the fictional multiplayer online role-playing game The Great War: Apocalypto, showcasing characters, storyline, and game features while inviting visitors to register or become patrons for early access and exclusive content.",
     functions: ["Tiered Access / Subscription Info", "Early Registration / Patron Call-to-Action", "Highlight Game Features", "Story and World Introduction", "Showcase Game Characters"],
     techStack: ["Next.js", "Tailwind CSS", "Framer Motion"],
@@ -53,11 +58,13 @@ const projects: Project[] = [
     id: 6,
     title: "AI PLMUN TUTOR",
     category: "AI-POWERED WEB PLATFORM",
+    videoUrl: VIDEO_ASSETS.projects.aiPlmunTutor,
     overview: "AI PLMUN Tutor is an AI-powered tutoring web application designed to assist students with learning and homework support through interactive question and answer sessions powered by intelligent language models and produce an effective learning materials for the subjects that the student fails to understand.",
     functions: ["AI CHAT TUTOR", "QUIZ GENERATION", "CUSTOM LEARNING MATERIAL GENERATION", "EDUCATIONAL SUPPORT", "HOMEWORK ASSISTANCE", "CONTEXTUAL LEARNING", "MULTI-ROLE ACCESSIBILITY", "INSTANT MESSAGING", "ANALYTICS DASHBOARD"],
     techStack: ["OpenAI API", "Python", "React"],
     link: "https://aiplmuntutor.vercel.app"
   },
+
   {
     id: 7,
     title: "COMING SOON",
@@ -88,16 +95,7 @@ export default function ProjectsPage() {
     setLoadingVideos(prev => ({ ...prev, [id]: false }));
   };
 
-  const getVideoSrc = (id: number) => {
-    switch (id) {
-      case 1: return "/hapag-ai-video.mp4";
-      case 2: return "/ontap-creatives-video.mp4";
-      case 3: return "/burnboxvideo.mp4"
-      case 4: return "/mmorpg-video.mp4";
-      case 6: return "/ai-plmun-tutor-video.mp4";
-      default: return null;
-    }
-  };
+
 
   // Helper to determine what to render in a slot
   const getSlotContent = (index: number) => {
@@ -271,7 +269,7 @@ export default function ProjectsPage() {
                         </svg>
                      </button>
                      
-                     {getVideoSrc(content.project.id) ? (
+                     {content.project.videoUrl ? (
                         <div className="w-full h-full relative group flex items-center justify-center">
                             {/* Loading Spinner */}
                             {(loadingVideos[content.project.id] ?? true) && (
@@ -281,7 +279,7 @@ export default function ProjectsPage() {
                             )}
                             <video
                                 className={`w-full h-full object-cover transition-opacity duration-500 ${(loadingVideos[content.project.id] ?? true) ? 'opacity-0' : 'opacity-100'}`}
-                                src={getVideoSrc(content.project.id)!}
+                                src={content.project.videoUrl}
                                 autoPlay
                                 loop
                                 muted
@@ -388,7 +386,7 @@ export default function ProjectsPage() {
                      
                      {/* Video Player or Placeholder */}
                      <div className="w-full aspect-video bg-carbon-black rounded-xl relative overflow-hidden flex items-center justify-center border border-white/5">
-                        {getVideoSrc(project.id) ? (
+                        {project.videoUrl ? (
                             <>
                                 {/* Loading Spinner */}
                                 {(loadingVideos[project.id] ?? true) && (
@@ -398,7 +396,7 @@ export default function ProjectsPage() {
                                 )}
                                 <video
                                     className={`w-full h-full object-cover transition-opacity duration-500 ${(loadingVideos[project.id] ?? true) ? 'opacity-0' : 'opacity-100'}`}
-                                    src={getVideoSrc(project.id)!}
+                                    src={project.videoUrl}
                                     controls
                                     muted
                                     loop

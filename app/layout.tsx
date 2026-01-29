@@ -19,6 +19,8 @@ export const metadata: Metadata = {
   description: "Transforming Vision into Future-Ready Solutions",
 };
 
+import { VIDEO_ASSETS } from "./config/assets";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -38,7 +40,7 @@ export default function RootLayout({
             playsInline
             className="absolute top-0 left-0 w-full h-full object-cover"
           >
-            <source src="/hero-bg.mp4" type="video/mp4" />
+            <source src={VIDEO_ASSETS.heroBackground} type="video/mp4" />
           </video>
           {/* Overlay */}
           <div className="absolute top-0 left-0 w-full h-full bg-[#000000]/75 backdrop-blur-[2px]"></div>
