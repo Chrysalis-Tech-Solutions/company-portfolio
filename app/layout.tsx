@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Manrope, Inter } from "next/font/google";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+// @ts-ignore
 import "./globals.css";
 
 const manrope = Manrope({
@@ -18,8 +19,6 @@ export const metadata: Metadata = {
   title: "Chrysalis Tech",
   description: "Transforming Vision into Future-Ready Solutions",
 };
-
-import { VIDEO_ASSETS } from "./config/assets";
 
 export default function RootLayout({
   children,
@@ -40,7 +39,7 @@ export default function RootLayout({
             playsInline
             className="absolute top-0 left-0 w-full h-full object-cover"
           >
-            <source src={VIDEO_ASSETS.heroBackground} type="video/mp4" />
+            <source src="/hero-bg.mp4" type="video/mp4" />
           </video>
           {/* Overlay */}
           <div className="absolute top-0 left-0 w-full h-full bg-[#000000]/75 backdrop-blur-[2px]"></div>

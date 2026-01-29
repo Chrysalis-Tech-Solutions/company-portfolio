@@ -5,7 +5,6 @@ export interface Project {
   overview: string;
   functions: string[];
   techStack: string[];
-  videoUrl?: string; // URL for the project video
-
+  videoUrl?: string; // Placeholder for video
   link?: string;
 };
