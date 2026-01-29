@@ -243,7 +243,7 @@ export default function HomeContent() {
                    onWaiting={() => setIsVideoLoading(true)}
                    onPlaying={() => setIsVideoLoading(false)}
                  >
-                   <source src="https://res.cloudinary.com/dlonwsopj/video/upload/v1769665132/ontap-creatives-video_xn8yst.mp4" type="video/mp4" />
+                   <source src="https://res.cloudinary.com/dlonwsopj/video/upload/v1769666292/hapagai_rfwzcl.mp4" type="video/mp4" />
                  </video>
                   {/* Screen Glare/Reflection */}
                  <div className="absolute inset-0 bg-linear-to-tr from-white/5 to-transparent pointer-events-none z-10"></div>
