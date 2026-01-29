@@ -92,11 +92,11 @@ export default function ProjectsPage() {
 
   const getVideoSrc = (id: number) => {
     switch (id) {
-      case 1: return "/hapag-ai-video.mp4";
+      case 1: return "https://res.cloudinary.com/dlonwsopj/video/upload/v1769666292/hapagai_rfwzcl.mp4";
       case 2: return "https://res.cloudinary.com/dlonwsopj/video/upload/v1769665132/ontap-creatives-video_xn8yst.mp4";
       case 3: return "https://res.cloudinary.com/dlonwsopj/video/upload/v1769664495/burnboxvideo_h51izp.mp4"
       case 4: return "/mmorpg-video.mp4";
-      case 6: return "/ai-plmun-tutor-video.mp4";
+      case 6: return "https://res.cloudinary.com/dlonwsopj/video/upload/v1769667046/plmunai_oicryr.mp4";
       default: return null;
     }
   };
