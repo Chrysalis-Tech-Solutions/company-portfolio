@@ -40,7 +40,7 @@ export default function Navbar() {
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 z-50 pointer-events-auto" onClick={() => setIsMobileMenuOpen(false)}>
             <Image
-              src="/companylogo.png"
+              src="/logocompany.svg"
               alt="Chrysalis Logo"
               width={32}
               height={32}

@@ -90,6 +90,7 @@ export default function ProjectsPage() {
 
 
 
+  
   const getVideoSrc = (id: number) => {
     switch (id) {
       case 1: return "https://res.cloudinary.com/dlonwsopj/video/upload/v1769666292/hapagai_rfwzcl.mp4";
