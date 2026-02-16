@@ -4,46 +4,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState, useRef } from "react";
 
-const PRICING_TIERS = [
-  {
-      name: "BASIC",
-      price: "₱10,000 - ₱30,000",
-      desc: "Perfect for individuals and small businesses starting their digital journey.",
-      features: ["Custom UI design", "Mobile & desktop optimization", "Static frontend development", "Up to 5 pages"],
-      border: "border-white/10",
-      shadow: "hover:shadow-[0_0_30px_rgba(255,255,255,0.1)]",
-      gradient: "from-gray-400 to-gray-600"
-  },
-  {
-      name: "PREMIUM",
-      price: "₱30,000 - ₱250,000",
-      desc: "Ideal for growing startups needing dynamic functionality and back-end integration.",
-      features: ["UI/UX design system", "Frontend + Backend development", "Database integration", "Admin dashboard"],
-      border: "border-electric-blue/50",
-      shadow: "shadow-[0_0_30px_rgba(58,134,255,0.15)] hover:shadow-[0_0_50px_rgba(58,134,255,0.3)]",
-      popular: true,
-      gradient: "from-neon-cyan to-electric-blue"
-  },
-  {
-      name: "PROFESSIONAL",
-      price: "₱250,000 - ₱850,000",
-      desc: "Advanced solutions for businesses requiring scalable, element-rich digital ecosystems.",
-      features: ["System architecture design", "Advanced UI/UX engineering", "Web + Mobile integration", "AI integration"],
-      border: "border-neon-violet/50",
-      shadow: "shadow-[0_0_40px_rgba(123,97,255,0.1)] hover:shadow-[0_0_60px_rgba(123,97,255,0.2)]",
-      gradient: "from-electric-blue to-soft-neon-pink"
-  },
-  {
-      name: "ENTERPRISE",
-      price: "LET'S DISCUSS IT",
-      desc: "Bespoke, mission-critical infrastructure for large-scale organizations.",
-      features: ["Enterprise system architecture", "Multi-system orchestration", "Data lake architecture", "AI/ML model development"],
-     border: "border-soft-neon-pink/50",
-      shadow: "shadow-[0_0_50px_rgba(255,78,205,0.15)] hover:shadow-[0_0_70px_rgba(255,78,205,0.3)]",
-      gradient: "from-soft-neon-pink to-neon-violet"
-  }
-];
-
 const PROJECT_CATEGORIES = [
   {
     title: "AI Driven Systems",
@@ -81,6 +41,7 @@ const PROJECT_CATEGORIES = [
        }
     ]
   },
+
   {
     title: "Interactive Websites",
     gradient: "from-orange-500 to-red-600",
@@ -107,7 +68,6 @@ const PROJECT_CATEGORIES = [
 
 export default function HomeContent() {
   const [badgeState, setBadgeState] = useState(0); // 0: Clients, 1: Projects
-  const [pricingIndex, setPricingIndex] = useState(0);
   const [categoryIndex, setCategoryIndex] = useState(0);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const [isVideoLoading, setIsVideoLoading] = useState(true);
@@ -116,14 +76,6 @@ export default function HomeContent() {
   useEffect(() => {
     const interval = setInterval(() => {
       setBadgeState((prev) => (prev === 0 ? 1 : 0));
-    }, 5000);
-    return () => clearInterval(interval);
-  }, []);
-
-  // Handle Pricing Carousel (5s interval)
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setPricingIndex((prev) => (prev + 1) % 4);
     }, 5000);
     return () => clearInterval(interval);
   }, []);
@@ -167,8 +119,6 @@ export default function HomeContent() {
                </div>
              </div>
           </div> */}
-
-          
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold font-heading leading-tight mb-6 bg-clip-text text-transparent bg-linear-to-b from-white to-white/70 max-w-5xl">
             Transforming Vision into <br />
             <span className="bg-clip-text text-transparent bg-linear-to-r from-electric-blue to-soft-neon-pink">
@@ -409,139 +359,84 @@ export default function HomeContent() {
         </div>
       </section>
 
-      {/* Section 5: Pricing Plans Slider*/}
-      <section className="flex flex-col w-full mt-20 transition-colors">
-        <div className="flex flex-col w-full">
-          <h2 className="text-center text-3xl md:text-5xl font-bold font-heading bg-clip-text text-transparent bg-linear-to-br from-white via-white to-white/50">
-              How We Engage
-            </h2>
-          {/* Pricing Slider (Mobile/Tablet) & Grid (Desktop) */}
-            <div className="relative w-full px-4 py-10 flex flex-col gap-5">
-              {/* Dots - Visible only on Mobile/Tablet */}
-              <div className="w-full flex gap-3 items-center justify-center lg:hidden">
-                {Array.from({ length: 4 }).map((_, index) => (
-                  <button 
-                      key={index}
-                      onClick={() => setPricingIndex(index)} 
-                      className={`h-0.5 rounded-full transition-all duration-300 ${pricingIndex === index ? "w-7 bg-electric-blue" : "w-5 bg-gray-600 hover:bg-gray-400"}`}
-                  />
-                ))}
+      {/* Section 5: How We Engage */}
+      <section className="flex flex-col w-full mt-20 mb-10 transition-colors">
+        <div className="flex flex-col w-full max-w-7xl mx-auto px-6">
+          <h2 className="text-center text-3xl md:text-5xl font-bold font-heading bg-clip-text text-transparent bg-linear-to-br from-white via-white to-white/50 mb-6">
+            How We Engage
+          </h2>
+          <p className="text-center text-muted-gray text-sm md:text-base max-w-2xl mx-auto mb-16 font-light leading-relaxed">
+            We follow a streamlined, collaborative process to bring your vision to life — from the first conversation to long-term support.
+          </p>
+
+          {/* Process Steps */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+            {/* Step 01 — Discovery */}
+            <div className="group relative flex flex-col p-7 rounded-2xl border border-white/5 bg-white/2 hover:bg-white/4 hover:border-white/10 transition-all duration-500">
+             
+             
+              <h3 className="text-white font-bold text-base mb-10 font-heading">Discovery</h3>
+              <p className="text-muted-gray text-sm leading-relaxed">We learn about your goals, audience, and requirements through an in-depth consultation.</p>
+              <div className="hidden lg:block absolute top-1/2 -right-6 w-6 h-px bg-linear-to-r from-electric-blue/30 to-transparent"></div>
+            </div>
+
+            {/* Step 02 — Planning */}
+            <div className="group relative flex flex-col p-7 rounded-2xl border border-white/5 bg-white/2 hover:bg-white/4 hover:border-white/10 transition-all duration-500">
+            
+              <h3 className="text-white font-bold text-base mb-10 font-heading">Planning</h3>
+              <p className="text-muted-gray text-sm leading-relaxed">We define the scope, timeline, and deliverables — then provide a tailored quotation.</p>
+              <div className="hidden lg:block absolute top-1/2 -right-6 w-6 h-px bg-linear-to-r from-neon-violet/30 to-transparent"></div>
+            </div>
+
+            {/* Step 03 — Development */}
+            <div className="group relative flex flex-col p-7 rounded-2xl border border-white/5 bg-white/2 hover:bg-white/4 hover:border-white/10 transition-all duration-500">
+            
+              <h3 className="text-white font-bold text-base mb-10 font-heading">Development</h3>
+              <p className="text-muted-gray text-sm leading-relaxed">We build iteratively with regular updates, ensuring transparency and quality at every stage.</p>
+              <div className="hidden lg:block absolute top-1/2 -right-6 w-6 h-px bg-linear-to-r from-soft-neon-pink/30 to-transparent"></div>
+            </div>
+
+            {/* Step 04 — Launch & Support */}
+            <div className="group relative flex flex-col p-7 rounded-2xl border border-white/5 bg-white/2 hover:bg-white/4 hover:border-white/10 transition-all duration-500">
+              
+              <h3 className="text-white font-bold text-base mb-10 font-heading">Launch & Support</h3>
+              <p className="text-muted-gray text-sm leading-relaxed">We deploy your project and provide ongoing support to keep everything running smoothly.</p>
+            </div>
+          </div>
+
+          {/* CTA Card */}
+          <div className="relative rounded-3xl border border-white/10 bg-white/5 backdrop-blur-md overflow-hidden">
+            {/* Top glow line */}
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-2/3 h-px bg-linear-to-r from-transparent via-electric-blue/50 to-transparent"></div>
+
+            <div className="relative z-10 flex flex-col md:flex-row items-center gap-8 p-8 md:p-12">
+              {/* Left — Message */}
+              <div className="flex-1 space-y-4 text-center md:text-left">
+                <h3 className="text-white font-bold text-xl md:text-2xl font-heading">
+                  Ready to start your project?
+                </h3>
+                <p className="text-muted-gray text-sm md:text-base leading-relaxed max-w-lg">
+                  Every project is unique — that&apos;s why we offer <span className="text-transparent bg-clip-text bg-linear-to-r from-electric-blue to-neon-cyan font-semibold">custom pricing</span> tailored to your scope and goals. Tell us what you need and we&apos;ll craft a plan that fits.
+                </p>
               </div>
 
-              {/* Slider Container - Mobile/Tablet (< lg) */}
-              <div className="w-full overflow-hidden lg:hidden">
-              <div className="flex transition-transform duration-700 ease-[cubic-bezier(0.25,1,0.5,1)]" style={{ transform: `translateX(-${pricingIndex * 100}%)` }}>
-                  {PRICING_TIERS.map((tier, i) => {
-                    const isProfessional = tier.name === "PROFESSIONAL";
-                    const isEnterprise = tier.name === "ENTERPRISE";
-                    
-                    return (
-                      <div key={i} className="w-full shrink-0 flex justify-center px-4">
-                          {/* Card Content */}
-                          <div className={`relative w-full max-w-md flex flex-col p-8 rounded-2xl border backdrop-blur-md transition-all duration-300 ${
-                                isEnterprise
-                                  ? "border-soft-neon-pink/50 bg-linear-to-b from-[#1a0510] to-transparent shadow-[0_0_50px_rgba(255,78,205,0.15)] ring-1 ring-soft-neon-pink/20"
-                                  : isProfessional
-                                  ? "border-neon-violet/50 bg-linear-to-b from-[#0f0a1e] to-transparent shadow-[0_0_40px_rgba(123,97,255,0.1)]"
-                                  : tier.popular
-                                  ? "border-electric-blue/50 bg-linear-to-b from-electric-blue/10 to-transparent shadow-[0_0_30px_rgba(58,134,255,0.15)]"
-                                  : "border-white/10 bg-white/5"
-                              }`}>
-                              {isEnterprise && (
-                                <div className="absolute inset-0 rounded-2xl bg-linear-to-b from-soft-neon-pink/5 to-transparent pointer-events-none"></div>
-                              )}
-                              
-                              {tier.popular && (
-                                <div className="absolute top-3 right-3 -translate-x-1/2 bg-linear-to-r from-electric-blue to-neon-cyan text-carbon-black text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow-lg z-20">
-                                  Most Popular
-                                </div>
-                              )}
-                              {isEnterprise && (
-                                <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-linear-to-r from-soft-neon-pink to-neon-violet text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow-[0_0_15px_rgba(255,78,205,0.5)] z-20">
-                                  Best Value
-                                </div>
-                              )}
-                              <h3 className="text-xl font-heading font-bold text-white mb-2">{tier.name}</h3>
-                              <div className={`text-2xl md:text-3xl font-bold bg-clip-text text-transparent bg-linear-to-r ${tier.gradient} mb-4`}>
-                                  {tier.price}
-                              </div>
-                              <p className="text-muted-gray text-sm mb-6 min-h-10">{tier.desc}</p>
-                              <ul className="space-y-3 mb-8">
-                                  {tier.features.map((feat, j) => (
-                                      <li key={j} className="flex items-center gap-3 text-sm text-gray-300">
-                                          <div className="w-1.5 h-1.5 rounded-full bg-white/50 shrink-0"></div>
-                                          {feat}
-                                      </li>
-                                  ))}
-                              </ul>
-                              <Link 
-                                  href={{ pathname: "/contact", query: { subject: "Client", tier: tier.name } }}
-                                  className="mt-auto w-full py-3 rounded-lg border border-white/20 hover:bg-white hover:text-carbon-black hover:border-transparent transition-all duration-300 text-center text-sm font-bold uppercase tracking-wider"
-                              >
-                                  Get Started
-                              </Link>
-                          </div>
-                      </div>
-                  )})}
-              </div>
-              </div>
-
-              {/* Grid Container - Desktop (>= lg) */}
-              <div className="hidden lg:grid grid-cols-4 gap-6 w-full max-w-7xl mx-auto">
-                  {PRICING_TIERS.map((tier, i) => {
-                    const isProfessional = tier.name === "PROFESSIONAL";
-                    const isEnterprise = tier.name === "ENTERPRISE";
-                    
-                    return (
-                      <div key={i} className="w-full h-full flex justify-center">
-                          {/* Card Content (Same structure, height aligned) */}
-                          <div className={`relative w-full flex flex-col p-6 rounded-2xl border backdrop-blur-md transition-all duration-300 hover:-translate-y-2 ${
-                                isEnterprise
-                                  ? "border-soft-neon-pink/50 bg-linear-to-b from-[#1a0510] to-transparent shadow-[0_0_50px_rgba(255,78,205,0.15)] hover:shadow-[0_0_70px_rgba(255,78,205,0.3)] ring-1 ring-soft-neon-pink/20"
-                                  : isProfessional
-                                  ? "border-neon-violet/50 bg-linear-to-b from-[#0f0a1e] to-transparent shadow-[0_0_40px_rgba(123,97,255,0.1)] hover:shadow-[0_0_60px_rgba(123,97,255,0.2)]"
-                                  : tier.popular
-                                  ? "border-electric-blue/50 bg-linear-to-b from-electric-blue/10 to-transparent shadow-[0_0_30px_rgba(58,134,255,0.15)]"
-                                  : "border-white/10 bg-white/5 hover:border-white/20"
-                              }`}>
-                              {isEnterprise && (
-                                <div className="absolute inset-0 rounded-2xl bg-linear-to-b from-soft-neon-pink/5 to-transparent pointer-events-none"></div>
-                              )}
-                              
-                              {tier.popular && (
-                                <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-linear-to-r from-electric-blue to-neon-cyan text-carbon-black text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow-lg z-20">
-                                  Most Popular
-                                </div>
-                              )}
-                              {isEnterprise && (
-                                <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-linear-to-r from-soft-neon-pink to-neon-violet text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow-[0_0_15px_rgba(255,78,205,0.5)] z-20">
-                                  Best Value
-                                </div>
-                              )}
-                              <h3 className="text-xl font-heading font-bold text-white mb-2">{tier.name}</h3>
-                              <div className={`text-2xl font-bold bg-clip-text text-transparent bg-linear-to-r ${tier.gradient} mb-4 wrap-break-word`}>
-                                  {tier.price}
-                              </div>
-                              <p className="text-muted-gray text-xs mb-6 min-h-15">{tier.desc}</p>
-                              <ul className="space-y-3 mb-8 grow">
-                                  {tier.features.map((feat, j) => (
-                                      <li key={j} className="flex items-start gap-3 text-xs text-gray-300">
-                                          <div className="w-1.5 h-1.5 rounded-full bg-white/50 shrink-0 mt-1"></div>
-                                          {feat}
-                                      </li>
-                                  ))}
-                              </ul>
-                              <Link 
-                                  href={{ pathname: "/contact", query: { subject: "Client", tier: tier.name } }}
-                                  className="mt-auto w-full py-3 rounded-lg border border-white/20 hover:bg-white hover:text-carbon-black hover:border-transparent transition-all duration-300 text-center text-xs font-bold uppercase tracking-wider"
-                              >
-                                  Get Started
-                              </Link>
-                          </div>
-                      </div>
-                  )})}
+              {/* Right — CTA Button */}
+              <div className="shrink-0">
+                <Link
+                  href="/pricing"
+                  className="group relative inline-flex items-center gap-3 px-10 py-4 rounded-full bg-linear-to-r from-electric-blue to-soft-neon-pink text-white font-bold text-sm uppercase tracking-wider hover:shadow-[0_0_40px_rgba(58,134,255,0.4)] transition-all duration-500 hover:scale-105 active:scale-95"
+                >
+                  <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
+                  </svg>
+                  Inquire Now
+                  <svg className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                  </svg>
+                </Link>
               </div>
             </div>
+          </div>
         </div>
       </section>
     </div>

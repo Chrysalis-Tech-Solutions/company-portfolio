@@ -67,6 +67,7 @@ export async function POST(request: NextRequest) {
                 <td style="padding: 8px 0; color: #666; font-weight: bold;">Email:</td>
                 <td style="padding: 8px 0; color: #333;">${email}</td>
               </tr>
+              
               ` : ''}
               <tr>
                 <td style="padding: 8px 0; color: #666; font-weight: bold;">Role:</td>
